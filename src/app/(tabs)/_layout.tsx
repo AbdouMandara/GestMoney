@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Home, AlarmClock} from 'lucide-react-native';
+import { Home, ClipboardClock} from 'lucide-react-native';
 export default function TabsLayout() {
   return (
     <Tabs>
@@ -8,6 +8,7 @@ export default function TabsLayout() {
         options={{
           title: 'GestMoney | Accueil',
           tabBarLabel: 'Accueil',
+          tabBarActiveTintColor : '#000000',
           tabBarIcon : ({color, size}) => (
             <Home color={color} size={size} />
           )
@@ -17,11 +18,12 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="history"
         options={{
-          title: 'GestMoney | Historique',
+            title: 'GestMoney | Historique',
           tabBarLabel: 'Historique',
-          tabBarIcon : ({color, size})=>{
-            <AlarmClock color={color} size={size} />
-          }
+          tabBarActiveTintColor : '#000000',
+          tabBarIcon : ({color, size})=>(
+            <ClipboardClock color={color} size={size} />
+          )
         }}
       />
 
