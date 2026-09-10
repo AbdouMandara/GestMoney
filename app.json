@@ -33,6 +33,26 @@
           "image": "./assets/images/splash-icon.png",
           "imageWidth": 76
         }
+      ],
+      [
+        "expo-font",
+        {
+            "android": {
+              "fonts": [
+                {
+                  "fontFamily": "Roboto Slab",
+                  "fontDefinitions": [
+                    {
+                      "path": "./path/to/RobotoSlab-VariableFont_wght.ttf"
+                    }
+                  ]
+                }
+              ]
+            },
+            "ios": {
+              "fonts": ["./path/to/SourceSerif4-ExtraBold.ttf"]
+            }
+          }
       ]
     ],
     "experiments": {
