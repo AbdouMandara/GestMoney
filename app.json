@@ -43,7 +43,7 @@
                   "fontFamily": "Roboto Slab",
                   "fontDefinitions": [
                     {
-                      "path": "./path/to/RobotoSlab-VariableFont_wght.ttf"
+                      "path": "./assets/fonts/RobotoSlab-VariableFont_wght.ttf"
                     }
                   ]
                 }
