@@ -1,5 +1,5 @@
 import { Tabs } from 'expo-router';
-import { Home, ClipboardClock} from 'lucide-react-native';
+import { Home, ClipboardClock, PlusCircle} from 'lucide-react-native';
 export default function TabsLayout() {
   return (
     <Tabs>
@@ -15,6 +15,17 @@ export default function TabsLayout() {
         }}
       />
 
+      <Tabs.Screen
+        name="addTransaction"
+        options={{
+            title: 'GestMoney | Historique',
+          tabBarLabel: 'Ajouter',
+          tabBarActiveTintColor : '#000000',
+          tabBarIcon : ({color, size})=>(
+            <PlusCircle color={color} size={size} />
+          )
+        }}
+      />
       <Tabs.Screen
         name="history"
         options={{

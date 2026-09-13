@@ -6,12 +6,12 @@ export default function Index() {
   return (
     <View className="flex items-center h-full gap-4 bg-blue-500">
       <View className="flex flex-column mt-8 items-center mb-4 w-[95%] gap-8 rounded-2xl p-4">
-        <View className="w-full flex items-center gap-4  border-white">
+        <View className="w-full flex items-center gap-1 ">
           <Text className="text-xl font-semibold text-white" style={{ fontFamily: 'Roboto Slab' }}>L' argent dans tes poches </Text>
           <Text className="text-4xl font-semibold text-white flex text-center" style={{ fontFamily: 'Roboto Slab' }}><Text className="text-6xl font-bold text-white" style={{ fontFamily: 'Roboto Slab' }}>0</Text> FCFA</Text>
         </View>
 
-        <View className="h-[25%] w-full justify-between px-1 flex flex-row overflow-hidden">
+        <View className="w-full justify-between px-1 flex flex-row overflow-hidden">
           <CardTotal title="Gains" icone={<MoveUpRight color="rgba(14, 250, 45, 0.84)" size={20}/>} price={50} signe="+" />
           <CardTotal title="Depenses" icone={<MoveDownLeft color="rgb(207, 13, 13)" size={20}/>} price={40} signe="-"/>
         </View>

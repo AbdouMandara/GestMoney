@@ -8,7 +8,7 @@ interface CardProps{
 }
 export default function CardTotal({title, icone, price, signe}: CardProps){
     return(
-          <View className="w-[45%] flex justify-center gap-2 items-center rounded-2xl">
+          <View className="w-[45%] flex justify-center gap-1 items-center rounded-2xl">
             <View className="flex flex-row gap-2 items-center justify-center">
                 {icone}
                 <Text className="text-white text-xl" style={{ fontFamily: 'Roboto Slab' }}>{title}</Text>
