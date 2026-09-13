@@ -1,7 +1,9 @@
-import { View } from "react-native";
+import { Text } from "react-native";
 
 export default function addTransaction(){
     return(
-        <View>Page d'ajout</View>
+        <>
+        <Text>Page d'ajout</Text>
+        </>
     )
 }

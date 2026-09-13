@@ -18,7 +18,7 @@ export default function TabsLayout() {
       <Tabs.Screen
         name="addTransaction"
         options={{
-            title: 'GestMoney | Historique',
+          title: 'GestMoney | Ajout',
           tabBarLabel: 'Ajouter',
           tabBarActiveTintColor : '#000000',
           tabBarIcon : ({color, size})=>(
