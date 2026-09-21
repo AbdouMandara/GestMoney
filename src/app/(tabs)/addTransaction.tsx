@@ -3,9 +3,11 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import { Picker } from "@react-native-picker/picker";
 import { Controller, useForm } from "react-hook-form";
 import transactionSchema, { type TransactionFormSchema}  from "../schemas/transaction.schema";
-
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import * as Crypto from "expo-crypto";
 export default function addTransaction() {
+
+  const cle_stockage:any = process.env.KEY_TRANSACTIONS 
   const { control, handleSubmit, formState : {errors} } = useForm<TransactionFormSchema>({
     resolver : zodResolver(transactionSchema),
     defaultValues: {
@@ -15,8 +17,27 @@ export default function addTransaction() {
     },
   });
 
-  const onSubmit = (data: TransactionFormSchema) => {
+  const onSubmit = async (data: TransactionFormSchema) => {
     alert(`Titre: ${data.titre}\nType: ${data.type}\nPrix: ${data.prix}`);
+    const new_transaction ={
+      id : Crypto.randomUUID(),
+      titre : data.titre,
+      type : data.type,
+      prix : data.prix,
+    }
+    const new_transaction_en_json = JSON.stringify(new_transaction)
+    const storedData = await AsyncStorage.getItem(cle_stockage);
+
+    const transactions = storedData
+      ? JSON.parse(storedData)
+      : [];
+
+    transactions.push(new_transaction_en_json);
+
+    await AsyncStorage.setItem(
+      cle_stockage,
+      JSON.stringify(transactions)
+    );
   };
 
   return (
