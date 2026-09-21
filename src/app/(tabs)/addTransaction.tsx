@@ -2,13 +2,13 @@ import { ScrollView, View, Text, TextInput, Button, KeyboardAvoidingView, Platfo
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Picker } from "@react-native-picker/picker";
 import { Controller, useForm } from "react-hook-form";
-import transactionSchema, { type TransactionFormSchema}  from "../schemas/transaction.schema";
+import transactionSchema, { TransactionFormInput, TransactionFormOutput, type TransactionFormSchema}  from "../schemas/transaction.schema";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Crypto from "expo-crypto";
 export default function addTransaction() {
 
   const cle_stockage:any = process.env.KEY_TRANSACTIONS 
-  const { control, handleSubmit, formState : {errors} } = useForm<TransactionFormSchema>({
+  const { control, handleSubmit, formState : {errors} } = useForm<TransactionFormInput, any, TransactionFormOutput>({
     resolver : zodResolver(transactionSchema),
     defaultValues: {
       titre: "",
@@ -24,15 +24,14 @@ export default function addTransaction() {
       titre : data.titre,
       type : data.type,
       prix : data.prix,
+      date_creation : Date.now()
     }
     const new_transaction_en_json = JSON.stringify(new_transaction)
     const storedData = await AsyncStorage.getItem(cle_stockage);
 
-    const transactions = storedData
-      ? JSON.parse(storedData)
-      : [];
+    const transactions = storedData ? JSON.parse(storedData) : [];
 
-    transactions.push(new_transaction_en_json);
+    transactions.push(new_transaction_en_json)
 
     await AsyncStorage.setItem(
       cle_stockage,

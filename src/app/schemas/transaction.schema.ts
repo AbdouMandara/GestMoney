@@ -14,9 +14,10 @@ const transactionSchema = z.object({
     
     prix : z
         .number({error : 'Le prix doit etre un nombre'})
-        .positive({error:"Le prix doit etre positive"})
+        .positive({error:"Le prix doit etre positive"}),
+    date_creation : z.date().default(() => new Date()),
     })
 export default transactionSchema;
 export type TransactionFormSchema = z.infer<typeof transactionSchema>;
-// export type TransactionFormInput = z.input<typeof transactionSchema>
-// export type TransactionFormOutput = z.output<typeof transactionSchema>
+export type TransactionFormInput = z.input<typeof transactionSchema>
+export type TransactionFormOutput = z.output<typeof transactionSchema>
