@@ -20,8 +20,11 @@ export default function addTransaction() {
   };
 
   return (
-    <View className="p-2 gap-15">
-      <Text className="text-2xl font-bold">Ajout de transaction</Text>
+    <View className="px-2 py-10 flex justify-center gap-4">
+    <View className="px-6 py-10 flex justify-center bg-white gap-4 rounded-xl">
+      <Text className="text-4xl font-bold text-center">Ajout de transaction</Text>
+      <Text className="text-xl text-center">Remplis ce formulaire pour enregistrer une transaction </Text>
+
       {/* Texte */}
       <Controller
         control={control}
@@ -80,6 +83,7 @@ export default function addTransaction() {
       />
 
       <Button title="Enregistrer" onPress={handleSubmit(onSubmit)} />
+    </View>
     </View>
   );
 }
