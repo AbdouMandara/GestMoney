@@ -21,8 +21,9 @@ export default function addTransaction() {
 
   return (
     <KeyboardAvoidingView
-  style={{ flex: 1 }}
+  style={{ flex: 1, paddingTop : 0 }}
   behavior={Platform.OS === "ios" ? "padding" : "height"}
+    keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
 >
     <ScrollView className="px-2 py-10 flex  gap-4" contentContainerStyle={{justifyContent:"center" ,flexGrow: 1}} keyboardShouldPersistTaps="handled">
       <View className="px-6 py-10 flex justify-center bg-white gap-4 rounded-xl">
