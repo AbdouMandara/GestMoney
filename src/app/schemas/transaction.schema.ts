@@ -1,9 +1,9 @@
 import { z } from 'zod'
 
-export const transactionTypeSchema = z.enum(["gain", "depense"], {
+const transactionTypeSchema = z.enum(["gain", "depense"], {
   error: "Choisis un type",
 });
-export const transactionSchema = z.object({
+const transactionSchema = z.object({
     titre : z
         .string()
         .trim()
@@ -12,11 +12,11 @@ export const transactionSchema = z.object({
 
     type : transactionTypeSchema,
     
-    prix : z.coerce
+    prix : z
         .number({error : 'Le prix doit etre un nombre'})
         .positive({error:"Le prix doit etre positive"})
     })
-    
-export type TransactionType = z.infer<typeof transactionTypeSchema>;
-export type TransactionFormInput = z.input<typeof transactionSchema>
-export type TransactionFormOutput = z.output<typeof transactionSchema>
+export default transactionSchema;
+export type TransactionFormSchema = z.infer<typeof transactionSchema>;
+// export type TransactionFormInput = z.input<typeof transactionSchema>
+// export type TransactionFormOutput = z.output<typeof transactionSchema>

@@ -1,45 +1,40 @@
-        import { View, Text, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button } from "react-native";
+import { zodResolver } from "@hookform/resolvers/zod";
 import { Picker } from "@react-native-picker/picker";
 import { Controller, useForm } from "react-hook-form";
-import { TransactionType } from "../schemas/transaction.schema";
-type FormData = {
-  name: string;
-  category: string;
-  amount: number;
-};
+import transactionSchema, { type TransactionFormSchema}  from "../schemas/transaction.schema";
 
-const OPTIONS = [
-  { value: "gain", label: "Gain" },
-  { value: "depense", label: "Dépense" },
-] satisfies {
-  value: TransactionType;
-  label: string;
-}[];
 
 export default function addTransaction() {
-  const { control, handleSubmit } = useForm<FormData>({
+  const { control, handleSubmit, formState : {errors} } = useForm<TransactionFormSchema>({
+    resolver : zodResolver(transactionSchema),
     defaultValues: {
-      name: "",
-      category: "",
-      amount: 0,
+      titre: "",
+      type: "gain",
+      prix: 0,
     },
   });
 
-  const onSubmit = (data: FormData) => {
+  const onSubmit = (data: TransactionFormSchema) => {
     console.log(data);
   };
 
   return (
-    <View className="p-20 gap-15">
+    <View className="p-2 gap-15">
+      <Text className="text-2xl font-bold">Ajout de transaction</Text>
       {/* Texte */}
       <Controller
         control={control}
-        name="name"
-        render={({ field: { onChange, value } }) => (
+        name="titre"
+        render={({ field: { onChange, value, onBlur } }) => (
+            // onChange → "la valeur a changé"
+            // onBlur   → "l'utilisateur a quitté le champ"
+            // value → "voici la valeur actuelle"
           <TextInput
             placeholder="Nom"
             value={value}
             onChangeText={onChange}
+            onBlur={onBlur}
             className="rounded-2xl p-6"
             style={{
               borderWidth: 1,
@@ -53,14 +48,13 @@ export default function addTransaction() {
       {/* Select */}
       <Controller
         control={control}
-        name="category"
+        name="type"
         render={({ field: { onChange, value } }) => (
           <View style={{ borderWidth: 1, borderRadius: 8 }}>
             <Picker selectedValue={value} onValueChange={onChange}>
               <Picker.Item label="Choisir une catégorie" value="" />
-              <Picker.Item label="Alimentation" value="food" />
-              <Picker.Item label="Transport" value="transport" />
-              <Picker.Item label="Autre" value="other" />
+              <Picker.Item label="Gain" value="gain" />
+              <Picker.Item label="Dépense" value="depense" />
             </Picker>
           </View>
         )}
@@ -69,7 +63,7 @@ export default function addTransaction() {
       {/* Nombre */}
       <Controller
         control={control}
-        name="amount"
+        name="prix"
         render={({ field: { onChange, value } }) => (
           <TextInput
             placeholder="Montant"
