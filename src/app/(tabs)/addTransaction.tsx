@@ -1,4 +1,4 @@
-import { View, Text, TextInput, Button } from "react-native";
+import { ScrollView, View, Text, TextInput, Button, KeyboardAvoidingView, Platform } from "react-native";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { Picker } from "@react-native-picker/picker";
 import { Controller, useForm } from "react-hook-form";
@@ -16,74 +16,97 @@ export default function addTransaction() {
   });
 
   const onSubmit = (data: TransactionFormSchema) => {
-    console.log(data);
+    alert(`Titre: ${data.titre}\nType: ${data.type}\nPrix: ${data.prix}`);
   };
 
   return (
-    <View className="px-2 py-10 flex justify-center gap-4">
-    <View className="px-6 py-10 flex justify-center bg-white gap-4 rounded-xl">
-      <Text className="text-4xl font-bold text-center">Ajout de transaction</Text>
-      <Text className="text-xl text-center">Remplis ce formulaire pour enregistrer une transaction </Text>
+    <KeyboardAvoidingView
+  style={{ flex: 1 }}
+  behavior={Platform.OS === "ios" ? "padding" : "height"}
+>
+    <ScrollView className="px-2 py-10 flex  gap-4" contentContainerStyle={{justifyContent:"center" ,flexGrow: 1}} keyboardShouldPersistTaps="handled">
+      <View className="px-6 py-10 flex justify-center bg-white gap-4 rounded-xl">
+        <Text className="text-4xl font-bold text-center">Ajout de transaction</Text>
+        <Text className="text-xl text-center">Remplis ce formulaire pour enregistrer une transaction </Text>
+       
+        <View className="flex gap-6 mb-4">
 
-      {/* Texte */}
-      <Controller
-        control={control}
-        name="titre"
-        render={({ field: { onChange, value, onBlur } }) => (
-            // onChange → "la valeur a changé"
-            // onBlur   → "l'utilisateur a quitté le champ"
-            // value → "voici la valeur actuelle"
-          <TextInput
-            placeholder="Nom"
-            value={value}
-            onChangeText={onChange}
-            onBlur={onBlur}
-            className="rounded-2xl p-6"
-            style={{
-              borderWidth: 1,
-              padding: 12,
-              borderRadius: 8,
-            }}
-          />
-        )}
-      />
-
-      {/* Select */}
-      <Controller
-        control={control}
-        name="type"
-        render={({ field: { onChange, value } }) => (
-          <View style={{ borderWidth: 1, borderRadius: 8 }}>
-            <Picker selectedValue={value} onValueChange={onChange}>
-              <Picker.Item label="Choisir une catégorie" value="" />
-              <Picker.Item label="Gain" value="gain" />
-              <Picker.Item label="Dépense" value="depense" />
-            </Picker>
+          {/* Pour le Titre*/}
+          <View className="flex gap-2">
+            <Text className="text-lg font-bold">Titre</Text>
+            {errors.titre && <Text className="text-red-500">{errors.titre.message}</Text>}
+            <Controller
+              control={control}
+              name="titre"
+              render={({ field: { onChange, value, onBlur } }) => (
+                  // onChange → "la valeur a changé"
+                  // onBlur   → "l'utilisateur a quitté le champ"
+                  // value → "voici la valeur actuelle"
+                <TextInput
+                  placeholder="Titre de la transaction"
+                  value={value}
+                  onChangeText={onChange}
+                  onBlur={onBlur}
+                  accessibilityLabel="titre"
+                  className="rounded-2xl p-6"
+                  style={{
+                    borderWidth: 1,
+                    padding: 12,
+                    borderRadius: 8,
+                  }}
+                />
+              )}
+            />
           </View>
-        )}
-      />
+          
+          <View>
+            <Text className="text-lg font-bold">Type</Text>
+            {errors.type && <Text className="text-red-500">{errors.type.message}</Text>}
+            {/* Select */}
+            <Controller
+              control={control}
+              name="type"
+              render={({ field: { onChange, value } }) => (
+                <View style={{ borderWidth: 1, borderRadius: 8 }}>
+                  <Picker selectedValue={value} onValueChange={onChange} accessibilityLabel="Type">
+                    <Picker.Item label="Choisir une catégorie" value="" />
+                    <Picker.Item label="Gain" value="gain" />
+                    <Picker.Item label="Dépense" value="depense" />
+                  </Picker>
+                </View>
+              )}
+              />
+          </View>
 
-      {/* Nombre */}
-      <Controller
-        control={control}
-        name="prix"
-        render={({ field: { onChange, value } }) => (
-          <TextInput
-            placeholder="Montant"
-            keyboardType="numeric"
-            value={String(value)}
-            onChangeText={(text) => onChange(Number(text))}
-            style={{
-              borderWidth: 1,
-              padding: 12,
-              borderRadius: 8,
-            }}
-          />
-        )}
-      />
+          <View>
+            <Text className="text-lg font-bold">Montant</Text>
+            {errors.prix && <Text className="text-red-500">{errors.prix.message}</Text>}
+            {/* Nombre */}
+            <Controller
+              control={control}
+              name="prix"
+              render={({ field: { onChange, value } }) => (
+                <TextInput
+                  accessibilityLabel="Montant"
+                  placeholder="Montant"
+                  keyboardType="numeric"
+                  value={String(value)}
+                  onChangeText={(text) => onChange(Number(text))}
+                  style={{
+                    borderWidth: 1,
+                    padding: 12,
+                    borderRadius: 8,
+                  }}
+                />
+              )}
+            />
+          </View>
+          
+        </View>
 
-      <Button title="Enregistrer" onPress={handleSubmit(onSubmit)} />
-    </View>
-    </View>
+      <Button title="Enregistrer"  onPress={handleSubmit(onSubmit)} />
+      </View>
+    </ScrollView>
+    </KeyboardAvoidingView>
   );
 }
