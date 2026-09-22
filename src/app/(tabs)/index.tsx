@@ -15,9 +15,6 @@ export default function Index() {
           <CardTotal title="Gains" icone={<MoveUpRight color="rgba(14, 250, 45, 0.84)" size={20}/>} price={50} signe="+" />
           <CardTotal title="Depenses" icone={<MoveDownLeft color="rgb(207, 13, 13)" size={20}/>} price={40} signe="-"/>
         </View>
-        {/* <View className="flex-1">
-          <Wallet color="white" size={50}  />
-        </View> */}
       </View>
 
       <View className="flex-1 w-full h-full rounded-l-3xl bg-white rounded-r-3xl pt-6 gap-4">

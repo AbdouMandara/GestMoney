@@ -12,22 +12,18 @@ export default function HistoryScreen(){
   useEffect(()=>{
     const charger = async ()=>{
         try {
-          
           const getTransactions = async () =>{
             const storedData = await AsyncStorage.getItem(cle_stockage);
             const transactions:Array<TransactionFormSchema> = storedData ? JSON.parse(storedData):[]
-            console.log('stored' + storedData)
-            console.log('re'+transactions)
             return transactions
           }
           const transactionsFetched = await getTransactions()
           setAllTransactions(transactionsFetched)
           
         } catch (error) {
-          alert('Erreur : '+ error)
+          alert('Erreur a tel niveau: '+ error)
         }
       }
-      
       charger()
   },[])
 
