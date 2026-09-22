@@ -28,17 +28,15 @@ export default function addTransaction() {
       prix : data.prix,
       date_creation : Date.now()
     }
-    const new_transaction_en_json = JSON.stringify(new_transaction)
     const storedData = await AsyncStorage.getItem(cle_stockage);
-
     const transactions = storedData ? JSON.parse(storedData) : [];
-
-    transactions.push(new_transaction_en_json)
+    transactions.push(new_transaction)
 
     await AsyncStorage.setItem(
       cle_stockage,
       JSON.stringify(transactions)
     );
+    console.log(transactions, new_transaction)
   };
 
   return (

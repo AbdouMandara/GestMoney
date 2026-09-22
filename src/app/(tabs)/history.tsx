@@ -16,6 +16,8 @@ export default function HistoryScreen(){
         const getTransactions = async () =>{
           const storedData = await AsyncStorage.getItem(cle_stockage);
           const transactions:Array<TransactionFormSchema> = storedData ? JSON.parse(storedData):[]
+          console.log('stored' + storedData)
+          console.log('re'+transactions)
           return transactions
         }
         const transactionsFetched = await getTransactions()
@@ -27,7 +29,6 @@ export default function HistoryScreen(){
       }
       
       charger()
-      alert(allTransactions)
   },[])
 
 
@@ -35,8 +36,9 @@ export default function HistoryScreen(){
   return (
     <View>
       <Text style={{ fontFamily: 'Roboto Slab' }} className='text-2xl'>Historique</Text>
+      <Text>Nombre : {allTransactions?.length}</Text>
       {allTransactions?.map((t)=>(
-        <Text key={t.id}>{t.titre}</Text>
+        <Text>{t.titre}</Text>
       ))}
     </View>
   )
