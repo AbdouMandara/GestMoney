@@ -6,13 +6,13 @@ export default function LineTransaction({titre, type, prix, date_creation}:Trans
         <>
         <View className="flex-row justify-between items-center w-full p-4 rounded-2xl mb-2 border border-gray-300 bg-white">
             <View>
-                <Text className="text-2xl font-bold">{titre}</Text>
-                <Text>{transformDate(date_creation)}</Text>
+                <Text className="text-2xl font-bold" style={{ fontFamily: 'Roboto Slab' }}>{titre}</Text>
+                <Text style={{ fontFamily: 'Roboto Slab' }}>{transformDate(date_creation)}</Text>
             </View>
 
             <Text className={`${
                 type === 'gain' ? 'text-[#00a43b] bg-[#eef8ef]' : 'text-[#ff6266] bg-[#fff3f2]'
-            } w-max px-2 py-1 rounded-md`}>
+            } w-max px-2 py-1 rounded-md`} style={{ fontFamily: 'Roboto Slab' }}>
                 {type === 'gain' ? '+' : '-'} {prix} FCFA
             </Text>
         </View>
