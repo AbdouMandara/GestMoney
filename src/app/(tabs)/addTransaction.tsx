@@ -20,7 +20,7 @@ export default function addTransaction() {
   });
 
   const onSubmit = async (data: TransactionFormSchema) => {
-    alert(`Titre: ${data.titre}\nType: ${data.type}\nPrix: ${data.prix}`);
+    alert(`Enregistrement de la nouvelle transaction réussie !\nTitre: ${data.titre}\nType: ${data.type}\nPrix: ${data.prix}`);
     const new_transaction ={
       id : Crypto.randomUUID(),
       titre : data.titre,
