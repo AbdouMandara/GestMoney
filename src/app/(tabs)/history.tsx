@@ -33,7 +33,7 @@ export default function HistoryScreen(){
 
   return (
     <View className='px-2 py-4'>
-      <Text style={{ fontFamily: 'Roboto Slab' }} className='text-2xl text-center font-bold'>Gains & Dépenses</Text>
+      <Text style={{ fontFamily: 'Roboto Slab' }} className='text-2xl mb-6 text-center font-bold'>Gains & Dépenses</Text>
       
       {allTransactions?.map((t)=>(
         <LineTransaction key={String(t.date_creation)} titre={t.titre} date_creation={t.date_creation} prix={t.prix} type={t.type} />
