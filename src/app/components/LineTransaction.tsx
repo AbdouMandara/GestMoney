@@ -1,12 +1,16 @@
 import { Text, View } from "react-native";
+import { type TransactionFormSchema } from "../schemas/transaction.schema";
 
-export default function LineTransaction(){
+export default function LineTransaction({titre, type, prix, date_creation}:TransactionFormSchema){
     return(
-        <View className="w-full px-4 border border-t border-b">
-            <Text>Titre ...</Text>
+        <>
+        <View className={`${type === 'gain' ? 'bg-green-500' : 'bg-red-100'} w-full px-4 rounded-2xl`}>          
             <View>
-                <Text>500</Text>
+                <Text>{titre}</Text>
+                <Text>{String(date_creation)}</Text>
             </View>
+            <Text>{type == 'gain' ? '+' : '-'}{prix}</Text>
         </View>
+        </>
     )
 }

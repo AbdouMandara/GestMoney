@@ -17,7 +17,7 @@ export default function addTransaction() {
       type: "gain",
       prix: 0,
     },
-  });
+  })
 
   const onSubmit = async (data: TransactionFormSchema) => {
     alert(`Enregistrement de la nouvelle transaction réussie !\nTitre: ${data.titre}\nType: ${data.type}\nPrix: ${data.prix}`);
@@ -28,24 +28,24 @@ export default function addTransaction() {
       prix : data.prix,
       date_creation : Date.now()
     }
-    const storedData = await AsyncStorage.getItem(cle_stockage);
-    const transactions = storedData ? JSON.parse(storedData) : [];
+    const storedData = await AsyncStorage.getItem(cle_stockage)
+    const transactions = storedData ? JSON.parse(storedData) : []
     transactions.push(new_transaction)
 
     await AsyncStorage.setItem(
       cle_stockage,
       JSON.stringify(transactions)
-    );
+    )
     console.log(transactions, new_transaction)
   };
 
   return (
     <KeyboardAvoidingView
-  style={{ flex: 1, paddingTop : 0 }}
-  behavior={Platform.OS === "ios" ? "padding" : "height"}
-    keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
->
-    <ScrollView className="px-2 py-10 flex  gap-4" contentContainerStyle={{justifyContent:"center" ,flexGrow: 1}} keyboardShouldPersistTaps="handled">
+      style={{ flex: 1, paddingTop : 0 }}
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.OS === "ios" ? 0 : 20}
+    >
+    <ScrollView className="px-2 py-10 flex gap-4" contentContainerStyle={{justifyContent:"center" ,flexGrow: 1}} keyboardShouldPersistTaps="handled">
       <View className="px-6 py-10 flex justify-center bg-white gap-4 rounded-xl">
         <Text className="text-4xl font-bold text-center">Ajout de transaction</Text>
         <Text className="text-xl text-center">Remplis ce formulaire pour enregistrer une transaction </Text>

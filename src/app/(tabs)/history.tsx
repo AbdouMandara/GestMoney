@@ -9,23 +9,22 @@ export default function HistoryScreen(){
   const [allTransactions, setAllTransactions] = useState<Array<TransactionFormSchema>>()
   
   useEffect(()=>{
-
     const charger = async ()=>{
-      try {
-        
-        const getTransactions = async () =>{
-          const storedData = await AsyncStorage.getItem(cle_stockage);
-          const transactions:Array<TransactionFormSchema> = storedData ? JSON.parse(storedData):[]
-          console.log('stored' + storedData)
-          console.log('re'+transactions)
-          return transactions
+        try {
+          
+          const getTransactions = async () =>{
+            const storedData = await AsyncStorage.getItem(cle_stockage);
+            const transactions:Array<TransactionFormSchema> = storedData ? JSON.parse(storedData):[]
+            console.log('stored' + storedData)
+            console.log('re'+transactions)
+            return transactions
+          }
+          const transactionsFetched = await getTransactions()
+          setAllTransactions(transactionsFetched)
+          
+        } catch (error) {
+          alert('Erreur : '+ error)
         }
-        const transactionsFetched = await getTransactions()
-        setAllTransactions(transactionsFetched)
-        
-      } catch (error) {
-        alert('Erreur : '+ error)
-      }
       }
       
       charger()
@@ -34,9 +33,9 @@ export default function HistoryScreen(){
 
 
   return (
-    <View>
-      <Text style={{ fontFamily: 'Roboto Slab' }} className='text-2xl'>Historique</Text>
-      <Text>Nombre : {allTransactions?.length}</Text>
+    <View className='px-2 py-4'>
+      <Text style={{ fontFamily: 'Roboto Slab' }} className='text-2xl text-center font-bold'>Gains & Dépenses</Text>
+      
       {allTransactions?.map((t)=>(
         <Text>{t.titre}</Text>
       ))}
