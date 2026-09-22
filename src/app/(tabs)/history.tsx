@@ -3,6 +3,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import { type TransactionFormSchema}  from "../schemas/transaction.schema";
 import { useEffect, useState } from 'react';
 import "../../../global.css";
+import LineTransaction from "../components/LineTransaction";
 
 export default function HistoryScreen(){
   const cle_stockage:any = process.env.EXPO_PUBLIC_KEY_TRANSACTIONS 
@@ -30,14 +31,12 @@ export default function HistoryScreen(){
       charger()
   },[])
 
-
-
   return (
     <View className='px-2 py-4'>
       <Text style={{ fontFamily: 'Roboto Slab' }} className='text-2xl text-center font-bold'>Gains & Dépenses</Text>
       
       {allTransactions?.map((t)=>(
-        <Text>{t.titre}</Text>
+        <LineTransaction key={String(t.date_creation)} titre={t.titre} date_creation={t.date_creation} prix={t.prix} type={t.type} />
       ))}
     </View>
   )
