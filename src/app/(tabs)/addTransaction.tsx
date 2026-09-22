@@ -5,9 +5,11 @@ import { Controller, useForm } from "react-hook-form";
 import transactionSchema, { TransactionFormInput, TransactionFormOutput, type TransactionFormSchema}  from "../schemas/transaction.schema";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import * as Crypto from "expo-crypto";
+import "../../../global.css";
+
 export default function addTransaction() {
 
-  const cle_stockage:any = process.env.KEY_TRANSACTIONS 
+  const cle_stockage:any = process.env.EXPO_PUBLIC_KEY_TRANSACTIONS
   const { control, handleSubmit, formState : {errors} } = useForm<TransactionFormInput, any, TransactionFormOutput>({
     resolver : zodResolver(transactionSchema),
     defaultValues: {

@@ -1,5 +1,5 @@
 import "../../../global.css";
-import { ScrollView,View, Text } from "react-native";
+import { View, Text } from "react-native";
 import CardTotal from "../components/CardTotal";
 import { MoveUpRight,  MoveDownLeft,  } from "lucide-react-native";
 export default function Index() {

@@ -4,6 +4,7 @@ const transactionTypeSchema = z.enum(["gain", "depense"], {
   error: "Choisis un type",
 });
 const transactionSchema = z.object({
+    id : z.string(),
     titre : z
         .string()
         .trim()
