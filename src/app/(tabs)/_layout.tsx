@@ -1,46 +1,48 @@
-import { Tabs } from 'expo-router';
-import { Home, ClipboardClock, PlusCircle} from 'lucide-react-native';
-import { TransactionProvider } from '../context/TransactionContext';
+import { Tabs } from "expo-router";
+import { ClipboardClock, Home, PlusCircle } from "lucide-react-native";
+import { TransactionProvider } from "../context/TransactionContext";
 export default function TabsLayout() {
   return (
     <TransactionProvider>
-    <Tabs>
-      <Tabs.Screen
-        name="index"
-        options={{
-          title: 'GestMoney | Accueil',
-          tabBarLabel: 'Accueil',
-          tabBarActiveTintColor : '#2292A4',
-          tabBarIcon : ({color, size}) => (
-            <Home color={color} size={size} />
-          )
+      <Tabs
+        screenOptions={{
+          headerTitleStyle: { fontFamily: "Oldenburg" },
+          tabBarLabelStyle: { fontFamily: "Oldenburg" },
         }}
-      />
+      >
+        <Tabs.Screen
+          name="index"
+          options={{
+            title: "GestMoney | Accueil",
+            tabBarLabel: "Accueil",
+            tabBarActiveTintColor: "#2292A4",
+            tabBarIcon: ({ color, size }) => <Home color={color} size={size} />,
+          }}
+        />
 
-      <Tabs.Screen
-        name="addTransaction"
-        options={{
-          title: 'GestMoney | Ajout',
-          tabBarLabel: 'Ajouter',
-          tabBarActiveTintColor : '#2292A4',
-          tabBarIcon : ({color, size})=>(
-            <PlusCircle color={color} size={size} />
-          )
-        }}
-      />
-      <Tabs.Screen
-        name="history"
-        options={{
-            title: 'GestMoney | Historique',
-          tabBarLabel: 'Historique',
-          tabBarActiveTintColor : '#2292A4',
-          tabBarIcon : ({color, size})=>(
-            <ClipboardClock color={color} size={size} />
-          )
-        }}
-      />
-
-    </Tabs>
+        <Tabs.Screen
+          name="addTransaction"
+          options={{
+            title: "GestMoney | Ajout",
+            tabBarLabel: "Ajouter",
+            tabBarActiveTintColor: "#2292A4",
+            tabBarIcon: ({ color, size }) => (
+              <PlusCircle color={color} size={size} />
+            ),
+          }}
+        />
+        <Tabs.Screen
+          name="history"
+          options={{
+            title: "GestMoney | Historique",
+            tabBarLabel: "Historique",
+            tabBarActiveTintColor: "#2292A4",
+            tabBarIcon: ({ color, size }) => (
+              <ClipboardClock color={color} size={size} />
+            ),
+          }}
+        />
+      </Tabs>
     </TransactionProvider>
   );
 }

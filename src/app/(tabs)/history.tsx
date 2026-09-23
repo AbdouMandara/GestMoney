@@ -29,7 +29,7 @@ export default function HistoryScreen() {
         <>
           <View className="items-center justify-center py-10 rounded-2xl mt-4 border border-gray-300 bg-white">
             <ReceiptText size={48} color="#2292A4" />
-            <Text className="mt-3 text-gray-500">
+            <Text className="mt-3 text-gray-500" style={{ fontFamily: "Oldenburg" }}>
               Tu n'as rien gagné et depensé depuis !
             </Text>
           </View>
