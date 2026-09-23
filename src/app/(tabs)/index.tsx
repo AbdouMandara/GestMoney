@@ -49,7 +49,7 @@ export default function Index() {
         </View>
       </View>
 
-      <View className="flex-1 w-full h-full rounded-l-3xl bg-white rounded-r-3xl pt-6 gap-4">
+      <View className="flex-1 w-full h-full bg-white rounded-tl-3xl rounded-tr-3xl pt-6 gap-4">
         <Text
           className="text-2xl text-center "
           style={{ fontFamily: "Oldenburg" }}
