@@ -11,7 +11,7 @@ export default function HistoryScreen() {
     <View className="p-4">
       <Text
         style={{ fontFamily: "Oldenburg" }}
-        className="text-2xl mt-6 text-center font-bold"
+        className="text-2xl m-6 text-center font-bold"
       >
         Gains & Dépenses
       </Text>

@@ -17,7 +17,9 @@ import transactionSchema, {
   TransactionFormInput,
   TransactionFormOutput,
   type TransactionFormSchema,
-} from "../schemas/transaction.schema";
+} from "../schemas/transaction.schema"
+import { useContext } from "react";
+import TransactionsContext from "../context/TransactionContext";
 
 export default function addTransaction() {
   const cle_stockage: any = process.env.EXPO_PUBLIC_KEY_TRANSACTIONS;
@@ -34,6 +36,7 @@ export default function addTransaction() {
     },
   });
 
+  const context = useContext(TransactionsContext)
   const onSubmit = async (data: TransactionFormSchema) => {
     alert(
       `Enregistrement de la nouvelle transaction réussie !\nTitre: ${data.titre}\nType: ${data.type}\nPrix: ${data.prix}`,
@@ -49,8 +52,9 @@ export default function addTransaction() {
     const transactions = storedData ? JSON.parse(storedData) : [];
     transactions.push(new_transaction);
 
-    await AsyncStorage.setItem(cle_stockage, JSON.stringify(transactions));
-    console.log(transactions, new_transaction);
+    await AsyncStorage.setItem(cle_stockage, JSON.stringify(transactions))
+    context?.setAllTransactions(transactions)
+    console.log(transactions)
   };
 
   return (
