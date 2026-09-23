@@ -1,7 +1,9 @@
 import { Tabs } from 'expo-router';
 import { Home, ClipboardClock, PlusCircle} from 'lucide-react-native';
+import { TransactionProvider } from '../context/TransactionContext';
 export default function TabsLayout() {
   return (
+    <TransactionProvider>
     <Tabs>
       <Tabs.Screen
         name="index"
@@ -39,5 +41,6 @@ export default function TabsLayout() {
       />
 
     </Tabs>
+    </TransactionProvider>
   );
 }
