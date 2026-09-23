@@ -1,5 +1,5 @@
-import { Stack } from "expo-router";
 import { useFonts } from "expo-font";
+import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
 import { useEffect } from "react";
 
@@ -7,7 +7,7 @@ SplashScreen.preventAutoHideAsync();
 
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
-    "Roboto Slab": require("../../assets/fonts/RobotoSlab-VariableFont_wght.ttf"),
+    Oldenburg: require("../../assets/fonts/Oldenburg-Regular.ttf"),
   });
 
   useEffect(() => {

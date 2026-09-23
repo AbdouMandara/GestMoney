@@ -37,22 +37,22 @@
       [
         "expo-font",
         {
-            "android": {
-              "fonts": [
-                {
-                  "fontFamily": "Roboto Slab",
-                  "fontDefinitions": [
-                    {
-                      "path": "./assets/fonts/RobotoSlab-VariableFont_wght.ttf"
-                    }
-                  ]
-                }
-              ]
-            },
-            "ios": {
-              "fonts": ["./path/to/SourceSerif4-ExtraBold.ttf"]
-            }
+          "android": {
+            "fonts": [
+              {
+                "fontFamily": "Oldenburg",
+                "fontDefinitions": [
+                  {
+                    "path": "./assets/fonts/Oldenburg-Regular.ttf"
+                  }
+                ]
+              }
+            ]
+          },
+          "ios": {
+            "fonts": ["./path/to/SourceSerif4-ExtraBold.ttf"]
           }
+        }
       ]
     ],
     "experiments": {

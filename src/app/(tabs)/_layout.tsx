@@ -10,7 +10,7 @@ export default function TabsLayout() {
         options={{
           title: 'GestMoney | Accueil',
           tabBarLabel: 'Accueil',
-          tabBarActiveTintColor : '#000000',
+          tabBarActiveTintColor : '#2292A4',
           tabBarIcon : ({color, size}) => (
             <Home color={color} size={size} />
           )
@@ -22,7 +22,7 @@ export default function TabsLayout() {
         options={{
           title: 'GestMoney | Ajout',
           tabBarLabel: 'Ajouter',
-          tabBarActiveTintColor : '#000000',
+          tabBarActiveTintColor : '#2292A4',
           tabBarIcon : ({color, size})=>(
             <PlusCircle color={color} size={size} />
           )
@@ -33,7 +33,7 @@ export default function TabsLayout() {
         options={{
             title: 'GestMoney | Historique',
           tabBarLabel: 'Historique',
-          tabBarActiveTintColor : '#000000',
+          tabBarActiveTintColor : '#2292A4',
           tabBarIcon : ({color, size})=>(
             <ClipboardClock color={color} size={size} />
           )
