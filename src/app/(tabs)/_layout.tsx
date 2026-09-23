@@ -1,6 +1,8 @@
 import { Tabs } from "expo-router";
-import { ClipboardClock, Home, PlusCircle } from "lucide-react-native";
+import { ClipboardClock, Home, PlusCircle, Trash2 } from "lucide-react-native";
 import { TransactionProvider } from "../context/TransactionContext";
+import { Pressable } from "react-native";
+import vider_lors_press_bouton from "../utils/viderAsyncStorage";
 export default function TabsLayout() {
   return (
     <TransactionProvider>
@@ -40,6 +42,15 @@ export default function TabsLayout() {
             tabBarIcon: ({ color, size }) => (
               <ClipboardClock color={color} size={size} />
             ),
+            headerRight:()=>(
+              <Pressable 
+                className="bg-[#fff3f2] flex flex-row p-2 rounded-xl mr-2  border border-[#ff6266]"
+                accessibilityLabel="Effacer les transactions"
+                onPress={vider_lors_press_bouton}
+              >
+                <Trash2 size={20} color="#ff6266"/>
+              </Pressable>
+            )
           }}
         />
       </Tabs>

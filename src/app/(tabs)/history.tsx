@@ -1,6 +1,6 @@
-import { ReceiptText } from "lucide-react-native";
+import { ReceiptText, Trash2 } from "lucide-react-native";
 import { useContext } from "react";
-import { Text, View } from "react-native";
+import { Text, ScrollView, View, Pressable } from "react-native";
 import "../../../global.css";
 import LineTransaction from "../components/LineTransaction";
 import TransactionsContext from "../context/TransactionContext";
@@ -8,7 +8,7 @@ export default function HistoryScreen() {
   const context = useContext(TransactionsContext); //ca contient la valeur que le Provider a mis dans le context
 
   return (
-    <View className="p-4">
+    <ScrollView className="p-4">
       <Text
         style={{ fontFamily: "Oldenburg" }}
         className="text-2xl m-6 text-center font-bold"
@@ -35,6 +35,6 @@ export default function HistoryScreen() {
           </View>
         </>
       )}
-    </View>
+    </ScrollView>
   );
 }
