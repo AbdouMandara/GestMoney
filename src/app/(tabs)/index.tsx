@@ -2,7 +2,12 @@ import "../../../global.css";
 import { View, Text } from "react-native";
 import CardTotal from "../components/CardTotal";
 import { MoveUpRight,  MoveDownLeft,  } from "lucide-react-native";
+import { useContext } from "react";
+import TransactionsContext from "../context/TransactionContext";
+
 export default function Index() {
+  const context = useContext(TransactionsContext)
+  console.log(context?.allTransactions?.map((t)=>(t.prix)))
   return (
     <View className="flex items-center h-full gap-4 bg-blue-500">
       <View className="flex flex-column mt-8 items-center mb-4 w-[95%] gap-8 rounded-2xl p-4">
