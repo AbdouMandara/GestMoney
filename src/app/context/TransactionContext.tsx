@@ -5,13 +5,13 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 
 type TypeAllTransactionContext={
-    allTransactions : TransactionFormSchema[] | undefined,
-    setAllTransactions: Dispatch<SetStateAction<TransactionFormSchema[] | undefined>>
+    allTransactions : TransactionFormSchema[],
+    setAllTransactions: Dispatch<SetStateAction<TransactionFormSchema[]>>
 }
 const TransactionsContext = createContext<TypeAllTransactionContext|null>(null)
 
 export function TransactionProvider({children}:{children : ReactNode}){
-    const [allTransactions, setAllTransactions] = useState<Array<TransactionFormSchema>>()
+    const [allTransactions, setAllTransactions] = useState<Array<TransactionFormSchema>>([])
     const cle_stockage:any = process.env.EXPO_PUBLIC_KEY_TRANSACTIONS 
 
     useEffect(() => {

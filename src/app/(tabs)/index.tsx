@@ -1,15 +1,17 @@
 import { MoveDownLeft, MoveUpRight } from "lucide-react-native";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { Text, View } from "react-native";
 import "../../../global.css";
 import CardTotal from "../components/CardTotal";
 import TransactionsContext from "../context/TransactionContext";
-
+import vider from "../utils/viderAsyncStorage";
 export default function Index() {
   const context = useContext(TransactionsContext);
-  console.log(context?.allTransactions?.map((t) => t.prix));
+  let somme_gain = context?.allTransactions.filter((t) => t.type === 'gain').reduce((acc,t)=> acc + t.prix, 0)
+  let somme_depense = context?.allTransactions.filter((t) => t.type === 'depense').reduce((acc,t)=> acc + t.prix, 0)
+  
+
   return (
-    // <View className="flex items-center h-full gap-4 bg-blue-500">
     <View className="flex items-center h-full gap-4 bg-[#2292A4]">
       <View className="flex flex-column mt-8 items-center mb-4 w-[95%] gap-8 rounded-2xl p-4">
         <View className="w-full flex items-center gap-1 ">
@@ -17,7 +19,7 @@ export default function Index() {
             className="text-xl font-semibold text-white"
             style={{ fontFamily: "Oldenburg" }}
           >
-            L' argent dans tes poches{" "}
+            L' argent dans tes poches
           </Text>
           <Text
             className="text-4xl font-semibold text-white flex text-center"
@@ -37,13 +39,13 @@ export default function Index() {
           <CardTotal
             title="Gains"
             icone={<MoveUpRight color="rgba(14, 250, 45, 0.52)" size={20} />}
-            price={50}
+            price={somme_gain}
             signe="+"
           />
           <CardTotal
             title="Depenses"
             icone={<MoveDownLeft color="rgb(207, 13, 13)" size={20} />}
-            price={40}
+            price={somme_depense}
             signe="-"
           />
         </View>

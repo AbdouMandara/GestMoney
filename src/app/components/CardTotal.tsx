@@ -3,7 +3,7 @@ import { Text, View } from "react-native";
 interface CardProps {
   title: String;
   icone: ReactElement;
-  price: number;
+  price: number|any;
   signe: String;
 }
 export default function CardTotal({ title, icone, price, signe }: CardProps) {
