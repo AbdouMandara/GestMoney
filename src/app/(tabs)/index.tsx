@@ -13,7 +13,7 @@ export default function Index() {
 
   return (
     <View className="flex items-center h-full gap-4 bg-[#2292A4]">
-      <View className="flex flex-column mt-8 items-center mb-4 w-[95%] gap-8 rounded-2xl p-4">
+      <View className="flex flex-column mt-8 items-center mb-4 w-[95%] gap-8 rounded-2xl py-4 ">
         <View className="w-full flex items-center gap-1 ">
           <Text className="text-xl font-semibold text-white" style={{ fontFamily: "Oldenburg" }}>
             L' argent dans tes poches
@@ -27,7 +27,7 @@ export default function Index() {
           </Text>
         </View>
 
-        <View className="w-full justify-between px-1 flex flex-row overflow-hidden">
+        <View className="w-full justify-between flex flex-row overflow-hidden">
           <CardTotal
             title="Gains"
             icone={<MoveUpRight color="rgba(14, 250, 45, 0.52)" size={20} />}
