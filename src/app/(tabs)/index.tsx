@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import "../../../global.css";
 import CardTotal from "../components/CardTotal";
 import TransactionsContext from "../context/TransactionContext";
-import vider from "../utils/viderAsyncStorage";
+
 export default function Index() {
   const context = useContext(TransactionsContext);
   let somme_gain = context?.allTransactions.filter((t) => t.type === 'gain').reduce((acc,t)=> acc + t.prix, 0)
@@ -15,21 +15,13 @@ export default function Index() {
     <View className="flex items-center h-full gap-4 bg-[#2292A4]">
       <View className="flex flex-column mt-8 items-center mb-4 w-[95%] gap-8 rounded-2xl p-4">
         <View className="w-full flex items-center gap-1 ">
-          <Text
-            className="text-xl font-semibold text-white"
-            style={{ fontFamily: "Oldenburg" }}
-          >
+          <Text className="text-xl font-semibold text-white" style={{ fontFamily: "Oldenburg" }}>
             L' argent dans tes poches
           </Text>
-          <Text
-            className="text-4xl font-semibold text-white flex text-center"
-            style={{ fontFamily: "Oldenburg" }}
-          >
-            <Text
-              className="text-6xl font-bold text-white"
-              style={{ fontFamily: "Oldenburg" }}
+          <Text className="text-4xl font-semibold text-white flex text-center" style={{ fontFamily: "Oldenburg" }}>
+            <Text className="text-6xl font-bold text-white" style={{ fontFamily: "Oldenburg" }}
             >
-              0
+              {(somme_gain ?? 0) > (somme_depense ?? 0) ? (somme_gain ?? 0) - (somme_depense ?? 0) : 0}
             </Text>{" "}
             FCFA
           </Text>
