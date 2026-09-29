@@ -26,6 +26,7 @@ export default function addTransaction() {
   const {
     control,
     handleSubmit,
+    reset,
     formState: { errors },
   } = useForm<TransactionFormInput, any, TransactionFormOutput>({
     resolver: zodResolver(transactionSchema),
@@ -55,6 +56,7 @@ export default function addTransaction() {
     await AsyncStorage.setItem(cle_stockage, JSON.stringify(transactions))
     context?.setAllTransactions(transactions)
     console.log(transactions)
+    reset()
   };
 
   return (
