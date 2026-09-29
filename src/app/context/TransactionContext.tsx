@@ -6,7 +6,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 type TypeAllTransactionContext={
     allTransactions : TransactionFormSchema[],
-    setAllTransactions: Dispatch<SetStateAction<TransactionFormSchema[]>>
+    setAllTransactions: Dispatch<SetStateAction<TransactionFormSchema[] >> 
 }
 const TransactionsContext = createContext<TypeAllTransactionContext|null>(null)
 
@@ -28,6 +28,7 @@ export function TransactionProvider({children}:{children : ReactNode}){
     }, []);
 
     return(
+        
         <TransactionsContext.Provider value={{allTransactions, setAllTransactions}}>
             {children}
         </TransactionsContext.Provider>

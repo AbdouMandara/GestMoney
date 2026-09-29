@@ -15,7 +15,7 @@ export default function LineTransaction({
             className="text-2xl font-bold"
             style={{ fontFamily: "Oldenburg" }}
           >
-            {titre}
+            {titre.length > 20 ? titre.slice(0, 15) + "..." : titre}
           </Text>
           <Text style={{ fontFamily: "Oldenburg" }}>
             {transformDate(date_creation)}

@@ -1,27 +1,24 @@
-import { useContext, useEffect } from "react";
+import { Dispatch, SetStateAction, useContext, useEffect } from "react";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import TransactionsContext from "../context/TransactionContext";
+import { TransactionFormSchema } from "../schemas/transaction.schema";
 
-const context = useContext(TransactionsContext)
-export function vider_lors_chargement(){
-    useEffect(()=>{
-        const chargement = async ()=>{
-            // const context = useContext(TransactionsContext)
-            await AsyncStorage.removeItem("mes_depenses");
-            alert('Supprimez avec succes !')
-            context?.setAllTransactions([])
-        }
-        chargement()
-    },[])
-}
+// export function vider_lors_chargement(){
+//     useEffect(()=>{
+//         const chargement = async ()=>{
+//             await AsyncStorage.removeItem("mes_depenses");
+//             alert('Supprimez avec succes !')
+//             context?.setAllTransactions([])
+//         }
+//         chargement()
+//     },[])
+// }
 
-const vider_lors_press_bouton = ()=>{
+export default function vider_lors_press_bouton(setAllTransactions:Dispatch<SetStateAction<TransactionFormSchema[]|undefined>>){
     const execution = async()=>{
         await AsyncStorage.removeItem("mes_depenses");
         alert('Supprimez avec succes !')
-        context?.setAllTransactions([])
+            setAllTransactions([])
     } 
     execution()
+    console.log('Context : '+ setAllTransactions)
 }
-
-export default vider_lors_press_bouton
