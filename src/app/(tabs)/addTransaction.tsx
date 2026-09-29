@@ -39,7 +39,7 @@ export default function addTransaction() {
   const context = useContext(TransactionsContext)
   const onSubmit = async (data: TransactionFormSchema) => {
     alert(
-      `Enregistrement de la nouvelle transaction réussie !\nTitre: ${data.titre}\nType: ${data.type}\nPrix: ${data.prix}`,
+      `Enregistrement de la nouvelle transaction réussie !\nTitre: ${data.titre}`,
     );
     const new_transaction = {
       id: Crypto.randomUUID(),
