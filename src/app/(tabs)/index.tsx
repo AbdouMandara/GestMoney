@@ -9,7 +9,9 @@ export default function Index() {
   const context = useContext(TransactionsContext);
   let somme_gain = context?.allTransactions.filter((t) => t.type === 'gain').reduce((acc,t)=> acc + t.prix, 0)
   let somme_depense = context?.allTransactions.filter((t) => t.type === 'depense').reduce((acc,t)=> acc + t.prix, 0)
-  
+  let argent_total = (somme_gain??0) + (somme_depense??0)
+  let pourcentage_gain = Number((((somme_gain??0)*100)/argent_total).toFixed(1))
+  let pourcentage_depense = Number((((somme_depense??0)*100)/argent_total).toFixed(1))
 
   return (
     <ScrollView className="flex gap-4 bg-[#2292A4]" contentContainerClassName="items-center">
@@ -51,7 +53,7 @@ export default function Index() {
           Regardes ton travail, <Text className="font-bold">Abdou</Text> !
 
         </Text>
-          <PieComponent />
+          <PieComponent pourcentage_depense={pourcentage_depense} pourcentage_gain={pourcentage_gain}/>
       </View>
     </ScrollView>
   );

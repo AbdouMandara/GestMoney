@@ -1,7 +1,13 @@
 import { View, Text } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
 import renderLegend from "./RenderLegend";
-export default function PieComponent(){
+
+interface PieComponentProps{
+  pourcentage_gain: number,
+  pourcentage_depense: number,
+
+}
+export default function PieComponent({pourcentage_gain, pourcentage_depense} : PieComponentProps){
       return (
         <View>
           <View
@@ -18,8 +24,8 @@ export default function PieComponent(){
               strokeWidth={4}
               donut
               data={[
-                {value: 40, color: 'rgba(14, 250, 45, 0.52)'},
-                {value: 20, color: 'rgb(243, 31, 31)'},
+                {value: pourcentage_gain, color: 'rgba(14, 250, 45, 0.52)'},
+                {value: pourcentage_depense, color: 'rgb(243, 31, 31)'},
               ]}
               innerCircleColor="#414141"
               innerCircleBorderWidth={4}
