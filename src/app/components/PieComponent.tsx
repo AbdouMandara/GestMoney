@@ -6,35 +6,20 @@ export default function PieComponent(){
         <View>
           <View
             style={{
-              marginVertical: 100,
               marginHorizontal: 30,
               borderRadius: 10,
-              paddingVertical: 50,
-              backgroundColor: '#414141',
+              paddingVertical: 5,
               justifyContent: 'center',
               alignItems: 'center',
             }}>
-
-            {/*********************    Custom Header component      ********************/}
-            <Text
-              style={{
-                color: 'white',
-                fontSize: 32,
-                fontWeight: 'bold',
-                marginBottom: 12,
-              }}>
-              Ton Travail
-            </Text>
-            {/****************************************************************************/}
 
             <PieChart
               strokeColor="white"
               strokeWidth={4}
               donut
               data={[
-                {value: 30, color: 'rgb(84,219,234)'},
-                {value: 40, color: 'lightgreen'},
-                {value: 20, color: 'orange'},
+                {value: 40, color: 'rgba(14, 250, 45, 0.52)'},
+                {value: 20, color: 'rgb(243, 31, 31)'},
               ]}
               innerCircleColor="#414141"
               innerCircleBorderWidth={4}
@@ -61,9 +46,8 @@ export default function PieComponent(){
                 justifyContent: 'space-evenly',
                 marginTop: 20,
               }}>
-              {renderLegend('Jan', 'rgb(84,219,234)')}
-              {renderLegend('Feb', 'lightgreen')}
-              {renderLegend('Mar', 'orange')}
+              {renderLegend('Gains', 'lightgreen')}
+              {renderLegend('Dépenses', 'orange')}
             </View>
             {/****************************************************************************/}
 

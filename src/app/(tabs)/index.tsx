@@ -1,6 +1,6 @@
 import { MoveDownLeft, MoveUpRight } from "lucide-react-native";
 import { useContext, useEffect } from "react";
-import { Text, View } from "react-native";
+import { Text, ScrollView, View } from "react-native";
 import "../../../global.css";
 import CardTotal from "../components/CardTotal";
 import TransactionsContext from "../context/TransactionContext";
@@ -12,7 +12,7 @@ export default function Index() {
   
 
   return (
-    <View className="flex items-center h-full gap-4 bg-[#2292A4]">
+    <ScrollView className="flex gap-4 bg-[#2292A4]" contentContainerClassName="items-center">
       <View className="flex flex-column mt-8 items-center mb-4 w-[95%] gap-8 rounded-2xl py-4 ">
         <View className="w-full flex items-center gap-1 ">
           <Text className="text-xl font-semibold text-white" style={{ fontFamily: "Oldenburg" }}>
@@ -43,16 +43,16 @@ export default function Index() {
         </View>
       </View>
 
-      <View className="flex-1 w-full h-full bg-white rounded-tl-3xl rounded-tr-3xl pt-6 gap-4">
+      <View className="flex-1 w-full bg-white rounded-tl-3xl rounded-tr-3xl pt-6">
         <Text
           className="text-2xl text-center "
           style={{ fontFamily: "Oldenburg" }}
         >
           Regardes ton travail, <Text className="font-bold">Abdou</Text> !
 
-          <PieComponent />
         </Text>
+          <PieComponent />
       </View>
-    </View>
+    </ScrollView>
   );
 }
