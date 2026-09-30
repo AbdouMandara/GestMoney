@@ -50,10 +50,14 @@
             ]
           },
           "ios": {
-            "fonts": ["./path/to/SourceSerif4-ExtraBold.ttf"]
+            "fonts": [
+              "./path/to/SourceSerif4-ExtraBold.ttf"
+            ]
           }
         }
-      ]
+      ],
+      "expo-image",
+      "expo-web-browser"
     ],
     "experiments": {
       "typedRoutes": true,

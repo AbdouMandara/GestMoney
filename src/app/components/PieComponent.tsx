@@ -24,7 +24,7 @@ export default function PieComponent({pourcentage_gain, pourcentage_depense} : P
               strokeWidth={4}
               donut
               data={[
-                {value: pourcentage_gain, color: 'rgba(14, 250, 45, 0.52)'},
+                {value: pourcentage_gain, color: 'rgb(13, 189, 36)'},
                 {value: pourcentage_depense, color: 'rgb(243, 31, 31)'},
               ]}
               innerCircleColor="#414141"
@@ -32,13 +32,14 @@ export default function PieComponent({pourcentage_gain, pourcentage_depense} : P
               innerCircleBorderColor={'white'}
               showValuesAsLabels={true}
               showText
+              textColor="white"
               textSize={18}
-              showTextBackground={true}
+              font="Oldenburg"
+              fontWeight="bold"
               centerLabelComponent={() => {
                 return (
                   <View>
-                    <Text style={{color: 'white', fontSize: 32, fontFamily: "Oldenburg"}}>90</Text>
-                    <Text style={{color: 'white', fontSize: 18, fontFamily: "Oldenburg"}}>Total</Text>
+                    <Text style={{color: 'white', fontSize: 36, fontFamily: "Oldenburg"}}>{pourcentage_depense<pourcentage_gain ? '😀' : '😨'}</Text>
                   </View>
                 );
               }}
@@ -52,7 +53,7 @@ export default function PieComponent({pourcentage_gain, pourcentage_depense} : P
                 justifyContent: 'space-evenly',
                 marginTop: 20,
               }}>
-              {renderLegend('Gains', 'rgba(14, 250, 45, 0.52)')}
+              {renderLegend('Gains', 'rgb(13, 189, 36)')}
               {renderLegend('Dépenses', 'rgb(243, 31, 31)')}
             </View>
             {/****************************************************************************/}
