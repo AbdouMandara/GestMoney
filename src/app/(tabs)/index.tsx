@@ -4,7 +4,7 @@ import { Text, View } from "react-native";
 import "../../../global.css";
 import CardTotal from "../components/CardTotal";
 import TransactionsContext from "../context/TransactionContext";
-
+import PieComponent from "../components/PieComponent";
 export default function Index() {
   const context = useContext(TransactionsContext);
   let somme_gain = context?.allTransactions.filter((t) => t.type === 'gain').reduce((acc,t)=> acc + t.prix, 0)
@@ -22,7 +22,7 @@ export default function Index() {
             <Text className="text-6xl font-bold text-white" style={{ fontFamily: "Oldenburg" }}
             >
               {(somme_gain ?? 0) > (somme_depense ?? 0) ? (somme_gain ?? 0) - (somme_depense ?? 0) : 0}
-            </Text>{" "}
+            </Text>
             FCFA
           </Text>
         </View>
@@ -49,6 +49,8 @@ export default function Index() {
           style={{ fontFamily: "Oldenburg" }}
         >
           Regardes ton travail, <Text className="font-bold">Abdou</Text> !
+
+          <PieComponent />
         </Text>
       </View>
     </View>

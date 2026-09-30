@@ -1,9 +1,7 @@
 import { View, Text } from "react-native";
 import { PieChart } from "react-native-gifted-charts";
-import renderLegend from "./gifted-charts/renderLegend";
-const App = () => {
-
-    
+import renderLegend from "./RenderLegend";
+export default function PieComponent(){
       return (
         <View>
           <View
@@ -17,7 +15,6 @@ const App = () => {
               alignItems: 'center',
             }}>
 
-
             {/*********************    Custom Header component      ********************/}
             <Text
               style={{
@@ -26,10 +23,9 @@ const App = () => {
                 fontWeight: 'bold',
                 marginBottom: 12,
               }}>
-              Quarterly Sales
+              Ton Travail
             </Text>
             {/****************************************************************************/}
-
 
             <PieChart
               strokeColor="white"
@@ -57,7 +53,6 @@ const App = () => {
               }}
             />
 
-
             {/*********************    Custom Legend component      ********************/}
             <View
               style={{
@@ -72,7 +67,6 @@ const App = () => {
             </View>
             {/****************************************************************************/}
 
-            
           </View>
         </View>
     );
