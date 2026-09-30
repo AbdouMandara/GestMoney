@@ -12,7 +12,7 @@ import { View, Text } from "react-native";
                 backgroundColor: color || 'white',
               }}
             />
-            <Text style={{color: 'black', fontSize: 16}}>{text || ''}</Text>
+            <Text style={{color: 'black', fontSize: 16, fontFamily: "Oldenburg"}}>{text || ''}</Text>
           </View>
         );
       };

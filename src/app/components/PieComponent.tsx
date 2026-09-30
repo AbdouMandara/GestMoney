@@ -31,8 +31,8 @@ export default function PieComponent(){
               centerLabelComponent={() => {
                 return (
                   <View>
-                    <Text style={{color: 'white', fontSize: 36}}>90</Text>
-                    <Text style={{color: 'white', fontSize: 18}}>Total</Text>
+                    <Text style={{color: 'white', fontSize: 32, fontFamily: "Oldenburg"}}>90</Text>
+                    <Text style={{color: 'white', fontSize: 18, fontFamily: "Oldenburg"}}>Total</Text>
                   </View>
                 );
               }}
@@ -46,8 +46,8 @@ export default function PieComponent(){
                 justifyContent: 'space-evenly',
                 marginTop: 20,
               }}>
-              {renderLegend('Gains', 'lightgreen')}
-              {renderLegend('Dépenses', 'orange')}
+              {renderLegend('Gains', 'rgba(14, 250, 45, 0.52)')}
+              {renderLegend('Dépenses', 'rgb(243, 31, 31)')}
             </View>
             {/****************************************************************************/}
 
