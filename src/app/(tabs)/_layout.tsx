@@ -55,7 +55,7 @@ export default function TabsLayout() {
                     vider_lors_press_bouton(() => {
                       context?.setAllTransactions(
                         []
-                      );
+                      )
                     })
                   } catch (error) {
                     console.error("Erreur lors de la suppression des transactions :", error); 
