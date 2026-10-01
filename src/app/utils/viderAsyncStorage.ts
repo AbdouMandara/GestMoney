@@ -20,5 +20,4 @@ export default function vider_lors_press_bouton(setAllTransactions:Dispatch<SetS
             setAllTransactions([])
     } 
     execution()
-    console.log('Context : '+ setAllTransactions)
 }
