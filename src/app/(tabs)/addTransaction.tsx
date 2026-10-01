@@ -56,7 +56,7 @@ export default function addTransaction() {
     await AsyncStorage.setItem(cle_stockage, JSON.stringify(transactions))
     context?.setAllTransactions(transactions)
     console.log(transactions)
-    reset()
+    reset() //Pour vider les inputs après l'enregistrement de la transaction
   };
 
   return (

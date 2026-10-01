@@ -8,7 +8,7 @@ export default function HistoryScreen() {
   const context = useContext(TransactionsContext); //ca contient la valeur que le Provider a mis dans le context
 
   return (
-    <ScrollView className="p-4">
+    <ScrollView className="p-4 ">
       <Text
         style={{ fontFamily: "Oldenburg" }}
         className="text-2xl m-6 text-center font-bold"

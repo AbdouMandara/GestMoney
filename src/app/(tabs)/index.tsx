@@ -1,4 +1,4 @@
-import { MoveDownLeft, MoveUpRight } from "lucide-react-native";
+import { Annoyed, MoveDownLeft, MoveUpRight } from "lucide-react-native";
 import { useContext, useEffect } from "react";
 import { Text, ScrollView, View } from "react-native";
 import "../../../global.css";
@@ -53,7 +53,17 @@ export default function Index() {
           Regardes ton travail, <Text className="font-bold">Abdou</Text> !
 
         </Text>
-          <PieComponent pourcentage_depense={pourcentage_depense} pourcentage_gain={pourcentage_gain}/>
+          {somme_gain === 0 && somme_depense === 0 ? (
+            <View className="h-[300px] flex flex-col justify-center items-center gap-2 rounded-2xl bg-white">
+              <Annoyed size={60} />
+              <Text className="text-center text-gray-500 " style={{ fontFamily: "Oldenburg" }}>
+                Tu n'as rien gagné et dépensé depuis !
+              </Text>
+            </View>
+          ) : (
+              
+              <PieComponent pourcentage_depense={pourcentage_depense} pourcentage_gain={pourcentage_gain}/>
+          )}
       </View>
     </ScrollView>
   );

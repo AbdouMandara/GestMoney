@@ -51,13 +51,15 @@ export default function TabsLayout() {
                 className="bg-[#fff3f2] flex flex-row p-2 rounded-xl mr-2  border border-[#ff6266]"
                 accessibilityLabel="Effacer les transactions"
                 onPress={() => {
-                    if (!context) return;
-
-                    vider_lors_press_bouton((value) => {
-                      context.setAllTransactions(
-                        value as Parameters<typeof context.setAllTransactions>[0]
+                  try {
+                    vider_lors_press_bouton(() => {
+                      context?.setAllTransactions(
+                        []
                       );
                     })
+                  } catch (error) {
+                    console.error("Erreur lors de la suppression des transactions :", error); 
+                  }
                 }}
               >
                 <Trash2 size={20} color="#ff6266"/>
